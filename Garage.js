@@ -1,5 +1,6 @@
 let garage = [];
 let iDInc = 0;
+let pArray = [];
 function makeCar(brand, problems) {
     iDInc++;
     let car = {
@@ -9,17 +10,56 @@ function makeCar(brand, problems) {
     }
     return car;
 }
+function makeCarFromInput() {
+    iDInc++;
+    myProblems = document.getElementsByName("probBox")[0].value.split(",");
+    let car = {
+        id: iDInc,
+        brand: document.getElementsByName("brandBox")[0].value,
+        problems: myProblems,
+    }
+    return car;
+}
 function checkInCar(car) {
+    let myP = document.createElement("p");
+    let myButton = document.createElement("BUTTON");
+    myButton.innerHTML = "Delete this Car";
+    myButton.addEventListener("click", function(event) {
+        checkOutCar(car);
+        event.preventDefault();
+    });
     garage.push(car);
+    myP.innerHTML = carToString(car);
+    myP.appendChild(myButton);
+    document.getElementById("Cars").appendChild(myP);
+    pArray.push(myP);
+
 }
 function checkOutCar(car) {
-    garage.splice(findItem(car), 1);
+    let index = findItem(car);
+    console.log(index);
+    if (!(index === -1)) { 
+        pArray[index].parentNode.removeChild(pArray[index]);
+        pArray.splice(index, 1);
+        garage.splice(index, 1);
+    }
 }
+function carToString(car) {
+    let myString = "Reference Number: " + car.id + "<br>Brand: "
+        + car.brand + "<br>Problems: ";
+    for (let prob in car.problems) {
+        myString += "<br> " + prob + ": " + car.problems[prob];
+
+    }
+    return myString + "<br> Price to fix: " + calculateBill(car) + "<br>";
+}
+
 function findItem(car) {
     for (let vehicle in garage) {
+    
         if (garage[vehicle].id === car.id) {
+    
             return vehicle;
-
         }
     } return -1;
 }
@@ -29,9 +69,19 @@ function calculateBill(car) {
         case "NISSAN":
             price = 100;
             break;
-            case "FORD"
-    }
+        case "FORD":
+            price = 50;
+            break;
+        case "CITROEN":
+            price = 500;
+            break;
+        default:
+            price = 250;
+            break;
 
+    }
+    price = price * car.problems.length;
+    return price;
 }
 
 function displayGarage() {
@@ -41,13 +91,3 @@ function displayGarage() {
     }
     return myString;
 }
-
-
-let myProblems = ["Messy", "Broken"]
-let testCar = makeCar("Nissan", myProblems);
-checkInCar(testCar);
-console.log(testCar.brand);
-console.log(displayGarage());
-console.log(findItem(testCar));
-checkOutCar(testCar);
-console.log(displayGarage());
