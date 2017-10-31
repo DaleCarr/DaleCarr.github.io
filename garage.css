@@ -2,4 +2,5 @@ h1{color: palevioletred; size: 500px; text-align:center; background: rebeccapurp
 
 p{color: white; border-style: solid;align-items:center; padding: 20px; margin: auto; width:50%; background: blueviolet;}
 #Menu{color: white; margin: auto;width:50%; text-align:right; background: purple ;}
-button{background: chartreuse}
+button{background: chartreuse;}
+#Instructions{text-align: left; border-style: solid}

@@ -14,6 +14,11 @@
     brand: <input name="brandBox" type="text" /><br>
     Problems (Comma-separated list): <input name="probBox" type="text" /><br>
     <input type = "button" onclick = "checkInCar(makeCarFromInput())" value = "Create a Car"><br><br><br>
+    <ul id = "Instructions">
+        <li>new Car: "create car (reference name) (brand) problem1 problem2..."</li>
+        <li>Check in: "checkin (reference name)"</li>
+        <li>Check out: "checkout (reference name)"</li>
+    </ul>
     ADMIN: <input name="adminBox" type="text" /><br>
     <input type = "button" onclick = "parseAdminRequest()" value = "Send Request"><br>
     </div>
