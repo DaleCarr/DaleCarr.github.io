@@ -45,13 +45,13 @@ function checkOutCar(car) {
     }
 }
 function carToString(car) {
-    let myString = "Reference Number: " + car.id + " Brand: "
-        + car.brand + " Problems: ";
+    let myString = "Reference Number: " + car.id + "<br>Brand: "
+        + car.brand + "<br>Problems: ";
     for (let prob in car.problems) {
         myString += "<br> " + prob + ": " + car.problems[prob];
 
     }
-    return myString + "<br> Price to fix: £" + calculateBill(car) + "<br>";
+    return myString + "<br> Price to fix: " + calculateBill(car) + "<br>";
 }
 
 function findItem(car) {
