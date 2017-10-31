@@ -29,9 +29,18 @@ function calculateBill(car) {
         case "NISSAN":
             price = 100;
             break;
-            case "FORD"
-    }
+        case "FORD":
+            price = 50;
+            break;
+        case "CITROEN":
+            price = 500;
+            break;
+        default:
+            price = 200;
+            break;
 
+    }
+    price = price * car.problems.length;
 }
 
 function displayGarage() {
