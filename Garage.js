@@ -84,6 +84,16 @@ function calculateBill(car) {
     return price;
 }
 
+function parseReadyString(string){
+    return string.toUpperCase;
+}
+function parseAdminRequest(){
+    let parseString =  document.getElementsByName("adminBox")[0].value;
+    let myStrings = parseString.split(" ");
+
+    if( myStrings[0]==="yo"){console.log("aaaa");}
+    
+}
 function displayGarage() {
     let myString = ""
     for (var carKey in garage) {
