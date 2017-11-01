@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+
+<body>
+
+    <div id="rektLOL"></div>
+
+
+
+</body>
+<script type="text/JavaScript">
+        function makeSpace(spacedWord){
+            let myString = "";
+            for(let i = 0;i<spacedWord.length-2;i++){
+            myString += " ";
+        }
+        return myString;
+    }
+
+
+        function rektangle(word ,width,height){
+            let reverse = false;
+            let myLettersArray = word.split("");
+        spacedWord = myLettersArray.join(" ");
+        let reverseWord = myLettersArray.reverse().join(" ");
+            let  output ="";
+
+
+        for(let i=0;i<width;i++){
+            if(i===0){output += spacedWord +" ";}
+           else if(i===width&&reverse){output += spacedWord +" ";}
+           else if(i===width&&!reverse){output += reverseWord +" ";} 
+            else if(reverse){ 
+                output+=reverseWord.substring(2,reverseWord.length) + " ";
+            }else{
+                output +=spacedWord.substring(2,spacedWord.length) + " ";
+            }
+            reverse = !reverse;
+        }
+
+
+        output += "<br>";
+       // for(let j = 0; j<height;j++){}
+            for(let i = 1; i<word.length-1;i++){
+                for(let k =0; k<width; k++){
+                output += word.charAt(i) + makeSpace(spacedWord) + word.charAt(word.length - (i + 1));
+            }}
+            output+= "<br>"
+            output+= reverseWord;
+        return output;}
+
+        function displayRektangle(){
+                let myP = document.createElement("pre");
+            let myDiv = document.getElementById("rektLOL");
+            myP.innerHTML = rektangle("REKT",5,5);
+            myDiv.appendChild(myP);
+        }
+        displayRektangle();
+        </script>
+
+</html>
