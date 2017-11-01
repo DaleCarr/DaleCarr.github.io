@@ -37,7 +37,6 @@ function checkInCar(car) {
 }
 function checkOutCar(car) {
     let index = findItem(car);
-    console.log(index);
     if (!(index === -1)) { 
         pArray[index].parentNode.removeChild(pArray[index]);
         pArray.splice(index, 1);
@@ -84,10 +83,49 @@ function calculateBill(car) {
     return price;
 }
 
-function displayGarage() {
-    let myString = ""
-    for (var carKey in garage) {
-        myString += garage[carKey].id;
-    }
-    return myString;
+function parseReadyString(string){
+    return string.toUpperCase();
 }
+
+let pretendGarage = [];
+
+
+function parseAdminRequest(){
+    let parseString =  document.getElementsByName("adminBox")[0].value;
+    let myStrings = parseString.split(" ");
+    let firstString = myStrings[0];
+    firstString = parseReadyString(firstString);
+switch(firstString){
+    case "CREATE":
+            let problemArray = [];
+            for(let i=4;i<myStrings.length;i++){
+                problemArray.push(myStrings[i]);
+            }
+            let refCar = {
+                car: makeCar(myStrings[3],problemArray),
+                refNo: myStrings[2]
+            }
+            pretendGarage.push(refCar)
+            break;
+    case "CHECKIN": 
+        let testString = myStrings[1];
+       for( var refKey in pretendGarage){
+           if(pretendGarage[refKey].refNo===testString){
+               checkInCar(pretendGarage[refKey].car);
+           }
+       }
+    
+    break;
+    case "CHECKOUT":
+      let identifier = myStrings[1];
+    for( var refKey in pretendGarage){
+        if(pretendGarage[refKey].refNo===identifier){
+            checkOutCar(pretendGarage[refKey].car);
+        }
+    }
+    break;
+}
+    
+    
+}
+

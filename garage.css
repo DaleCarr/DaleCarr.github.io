@@ -1,5 +1,6 @@
 h1{color: palevioletred; size: 500px; text-align:center; background: rebeccapurple; font-size:100px; }
 
 p{color: white; border-style: solid;align-items:center; padding: 20px; margin: auto; width:50%; background: blueviolet;}
-#Menu{color: palevioletred; margin: auto;width:50%; text-align:center; background: purple ;}
-button{background: chartreuse}
+#Menu{color: white; margin: auto;width:50%; text-align:right; background: purple ;}
+button{background: chartreuse;}
+#Instructions{list-style: none;text-align: left; border-style: dotted; } 
