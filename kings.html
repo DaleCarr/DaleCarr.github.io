@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
-        <link rel="stylesheet" type="text/css" href="kings.css">.
+<link rel="stylesheet" type="text/css" href="kings.css">.
+
 <head>
-<title>Kings</title>
+    <title>Kings</title>
 
 
 </head>
-<body><div id= "div2">
-        Search: <input name = "searchBox" type = "text"> 
-        <input type = "button" onclick = "searchFor()" value = "Search">
-        <br>
-        </div>
-        <div id = "div1">
-            </div>
 
-<script type="text/JavaScript">
+<body>
+    <div id="div2">
+        Search:
+        <input name="searchBox" type="text">
+        <input type="button" onclick="searchFor()" value="Search">
+        <br>
+    </div>
+    <div id="div1">
+    </div>
+
+    <script type="text/JavaScript">
 let rulers = [];
 let requestURLSecond = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json";
 let requestSecond = new XMLHttpRequest();
@@ -83,4 +87,5 @@ let myNode = document.getElementById("div1");
 }
 </script>
 </body>
+
 </html>
