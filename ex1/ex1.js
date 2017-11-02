@@ -1,13 +1,14 @@
 A();
 
-function C() {
-	console.log("OOPS!");
+function c() {
+	console.log("C");
+	d();
 }
 
 function E(f) {
 	console.log("E");
-	f();
 	var f = F;
+	f();
 }
 
 function A() {
@@ -15,23 +16,21 @@ function A() {
 	B();
 };
 
-var C;
+
 
 function G() {
 	console.log("G");
-	H();
 
 	var H = function() {
 		console.log("H");
 		I();
 	};
+	H();
 }
-
-var D = d;
 
 function d() {
 	console.log("D");
-	E();
+	E(F);
 }
 
 function I() {
@@ -40,12 +39,12 @@ function I() {
 	J();
 }
 
-function B() {
+	function B() {
 	console.log("B");
 	C();
 };
 
-var F = function() {
+	function F() {
 	console.log("F");
 	G();
 };
@@ -53,24 +52,20 @@ var F = function() {
 var rest = "KLMNOPQRSTUVWXYZ".split("");
 for (var i=0; i<rest.length; i++) {
 	(function(i){
-		// define the current function
-		window[rest[i]] = function() {
 			console.log(rest[i]);
-			if (i < (rest.length-1)) {
-				// TODO: call the next function
-			}
-		};
+	
 	})(i);
 }
 
-var J = function() {
+function J() {
 	J = function() {
 		console.log("J");
+		var K = function(){}
 		K();
 	};
 };
 
-C = function() {
+ function C() {
 	console.log("C");
 	D();
 };
