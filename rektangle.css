@@ -1,20 +1,19 @@
 body{background: black;}
 input{    border: 2px dashed greenyellow;
     color: greenyellow;
-background-color: black; }
+background-color: black; 
+margin:10px;}
 #menu{
-    margin :auto;
-    padding: 50px;
+    margin-right: 50%;
+    
     border: 2px dashed greenyellow;
     color: greenyellow; 
     text-align:left;
-padding-right:50%; }
+padding-right:50%;
+padding-bottom: 20px; }
 #preTag{
     color: greenyellow; 
     margin: auto;
     text-align: center;}
-
-button :active{
-    background-color: red;
 
 }
