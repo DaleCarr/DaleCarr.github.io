@@ -1,0 +1,8 @@
+body{background-color: deepskyblue;}
+p{border: 1px double darkblue;
+padding: 25px;
+margin: auto;
+text-align: center;}
+
+#div2{float: left;}
+#div1{float:right;}
