@@ -1,10 +1,23 @@
 <!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="rektangle.css">.
 <html>
 
 
 <body>
+    <div id="menu">
+        Your String:
+        <input name="stringBox" type="text" />
+        <br> Width:
+        <input name="widthBox" type="number" />
+        <br> Height:
+        <input name="heightBox" type="number" />
+        <br>
+        <input type="button" onclick="displayRektangle()" value="display your REKTangle!"> 
+        
+    </div>
 
-    <div id="rektLOL"></div>
+    <pre id="preTag"></pre>
+
 
 
 
@@ -18,45 +31,72 @@
         return myString;
     }
 
+        function lineXTimes(string, reversedString,times, tempReverse){
+            let myReverse =tempReverse;
+            let myFinalString = "";
+    
+        for (let i=0;i<times;i++){
+            if((i===times||i===0)&&!myReverse){
+                myFinalString += string +" ";
+        }else if((i===times||i===0)&&myReverse){
+               myFinalString += reversedString +" ";
+            } else if(myReverse){ 
+                myFinalString+=reversedString.substring(2,reversedString.length) + " ";
+              
+               
+            }else{
+                 myFinalString +=string.substring(2,string.length) + " ";
+            }
+            
+            myReverse = !myReverse;
+    }
+
+       return myFinalString.trim(" "); 
+    }
+
 
         function rektangle(word ,width,height){
-            let reverse = false;
+            let outerReverse = false;
             let myLettersArray = word.split("");
         spacedWord = myLettersArray.join(" ");
         let reverseWord = myLettersArray.reverse().join(" ");
-            let  output ="";
-
-
-        for(let i=0;i<width;i++){
-            if(i===0){output += spacedWord +" ";}
-           else if(i===width&&reverse){output += spacedWord +" ";}
-           else if(i===width&&!reverse){output += reverseWord +" ";} 
-            else if(reverse){ 
-                output+=reverseWord.substring(2,reverseWord.length) + " ";
-            }else{
-                output +=spacedWord.substring(2,spacedWord.length) + " ";
-            }
-            reverse = !reverse;
-        }
-
-
+            let  output =lineXTimes(spacedWord,reverseWord,width,outerReverse);      
         output += "<br>";
-       // for(let j = 0; j<height;j++){}
+     for(let j = 0; j<height;j++){
+         let innerReverse = outerReverse;
             for(let i = 1; i<word.length-1;i++){
-                for(let k =0; k<width; k++){
-                output += word.charAt(i) + makeSpace(spacedWord) + word.charAt(word.length - (i + 1));
-            }}
-            output+= "<br>"
-            output+= reverseWord;
+              innerReverse = outerReverse;
+              let kMax = width+1;
+                for(let k =0; k<kMax; k++){
+                    if(k!=kMax&&k>0){output+=makeSpace(spacedWord)}
+                    if(innerReverse){
+                        output += word.charAt(word.length-1-i);
+                    }
+                    else{
+                        output += word.charAt(i);
+                    }
+                    innerReverse = !innerReverse;
+            }
+            output+= "<br>"}
+            outerReverse = !outerReverse;
+            output +=lineXTimes(spacedWord,reverseWord,width,outerReverse)+"<br>";      
+        
+         
+         
+        }
         return output;}
 
         function displayRektangle(){
-                let myP = document.createElement("pre");
-            let myDiv = document.getElementById("rektLOL");
-            myP.innerHTML = rektangle("REKT",5,5);
-            myDiv.appendChild(myP);
+            let myHeightBox =  document.getElementsByName("heightBox")[0];
+            let myWidthBox = document.getElementsByName("widthBox")[0];
+                let myP = document.getElementById("preTag");
+                let myWidth =  parseInt(myWidthBox.value);
+                let myHeight = myHeightBox.value;
+                let myString = document.getElementsByName("stringBox")[0].value;
+                myP.innerHTML = rektangle(myString,myWidth,myHeight);
+    
         }
-        displayRektangle();
+        
         </script>
 
 </html>
