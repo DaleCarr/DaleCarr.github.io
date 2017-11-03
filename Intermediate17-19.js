@@ -34,9 +34,6 @@ requestSecond.onload = function () {
     }
 }
 
-
-
-
 function makeKing(ruler) {
     let newKing = {
         name: "Default",
@@ -51,21 +48,21 @@ function makeKing(ruler) {
     return newKing;
 }
 
-function essentiallyToString(ruler){
+function essentiallyToString(ruler) {
     let finalString = "";
-    finalString +="Name: " + ruler.name;
-    finalString +="\n" + "City: " + ruler.city;
-    finalString +="\n" +"House: " + ruler.house;
-    finalString +="\n" +"Years Reigning: " + ruler.years;
+    finalString += "Name: " + ruler.name;
+    finalString += "\n" + "City: " + ruler.city;
+    finalString += "\n" + "House: " + ruler.house;
+    finalString += "\n" + "Years Reigning: " + ruler.years;
     return finalString;
 }
 
 function searchFor() {
 
-let myNode = document.getElementById("div2");
+    let myNode = document.getElementById("div2");
     while (myNode.firstChild) {
-    myNode.removeChild(myNode.firstChild);
-}
+        myNode.removeChild(myNode.firstChild);
+    }
 
     let string = document.getElementsByName("searchBox")[0].value;
     string = string.toUpperCase();
@@ -78,10 +75,10 @@ let myNode = document.getElementById("div2");
             retArray.push(rulers[item]);
         }
     }
-    for(let temp in retArray){
-         let myP2 = document.createElement("p");
+    for (let temp in retArray) {
+        let myP2 = document.createElement("p");
         myP2.textContent = essentiallyToString(retArray[temp]);
         document.getElementById("div2").appendChild(myP2);
     }
-     
+
 }

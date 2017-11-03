@@ -27,7 +27,7 @@ function getSandwich(sandwich) {
 
     } return "";
 }
-console.log(getSandwich("breadtest meatbreaaaad"));
+console.log(getSandwich("aaaabreadtest meatbreadaaaaa"));
 
 function evenlySpaced(small, medium, large) {
     return ((medium - small) === (large - medium));

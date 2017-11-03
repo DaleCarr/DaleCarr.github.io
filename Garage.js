@@ -24,7 +24,7 @@ function checkInCar(car) {
     let myP = document.createElement("p");
     let myButton = document.createElement("BUTTON");
     myButton.innerHTML = "Delete this Car";
-    myButton.addEventListener("click", function(event) {
+    myButton.addEventListener("click", function (event) {
         checkOutCar(car);
         event.preventDefault();
     });
@@ -37,7 +37,7 @@ function checkInCar(car) {
 }
 function checkOutCar(car) {
     let index = findItem(car);
-    if (!(index === -1)) { 
+    if (!(index === -1)) {
         pArray[index].parentNode.removeChild(pArray[index]);
         pArray.splice(index, 1);
         garage.splice(index, 1);
@@ -55,9 +55,9 @@ function carToString(car) {
 
 function findItem(car) {
     for (let vehicle in garage) {
-    
+
         if (garage[vehicle].id === car.id) {
-    
+
             return vehicle;
         }
     } return -1;
@@ -83,50 +83,50 @@ function calculateBill(car) {
     return price;
 }
 
-function parseReadyString(string){
+function parseReadyString(string) {
     return string.toUpperCase();
 }
 
 let pretendGarage = [];
 
 
-function parseAdminRequest(){
-    let parseString =  document.getElementsByName("adminBox")[0].value;
+function parseAdminRequest() {
+    let parseString = document.getElementsByName("adminBox")[0].value;
     let myStrings = parseString.split(" ");
     let firstString = myStrings[0];
     firstString = parseReadyString(firstString);
-switch(firstString){
-    case "CREATE":
+    switch (firstString) {
+        case "CREATE":
             let problemArray = [];
-            for(let i=4;i<myStrings.length;i++){
+            for (let i = 4; i < myStrings.length; i++) {
                 problemArray.push(myStrings[i]);
             }
             let refCar = {
-                car: makeCar(myStrings[3],problemArray),
+                car: makeCar(myStrings[3], problemArray),
                 refNo: myStrings[2]
             }
             pretendGarage.push(refCar)
-            alert("Created car: " +refCar.refNo);
+            alert("Created car: " + refCar.refNo);
             break;
-    case "CHECKIN": 
-        let testString = myStrings[1];
-       for( var refKey in pretendGarage){
-           if(pretendGarage[refKey].refNo===testString){
-               checkInCar(pretendGarage[refKey].car);
-           }
-       }
-    
-    break;
-    case "CHECKOUT":
-      let identifier = myStrings[1];
-    for( var refKey in pretendGarage){
-        if(pretendGarage[refKey].refNo===identifier){
-            checkOutCar(pretendGarage[refKey].car);
-        }
+        case "CHECKIN":
+            let testString = myStrings[1];
+            for (var refKey in pretendGarage) {
+                if (pretendGarage[refKey].refNo === testString) {
+                    checkInCar(pretendGarage[refKey].car);
+                }
+            }
+
+            break;
+        case "CHECKOUT":
+            let identifier = myStrings[1];
+            for (var refKey in pretendGarage) {
+                if (pretendGarage[refKey].refNo === identifier) {
+                    checkOutCar(pretendGarage[refKey].car);
+                }
+            }
+            break;
     }
-    break;
-}
-    
-    
+
+
 }
 
