@@ -18,37 +18,6 @@ function deletePTag() {
     a.parentNode.removeChild(a);
 }
 
-let requestURL = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json";
-let request = new XMLHttpRequest();
-request.open("GET", requestURL);
-request.responseType = "json"
-request.send();
-request.onload = function () {
-    let requestData = request.response;
-    let myH1 = document.createElement("h1");
-    let myH2 = document.createElement("h2");
-
-    myH1.textContent = requestData["squadName"];
-    myH2.textContent = requestData["secretBase"];
-    let members = requestData["members"];
-
-    for (let hero in members) {
-        let myP = document.createElement("p");
-        let myString = "Name: " + members[hero].name;
-        myString += " Age: " + members[hero].age;
-        myString += " Secret Identity: " + members[hero].secretIdentity;
-        myString += " Powers: ";
-        for (let power in members[hero].powers) {
-            myString += " " + members[hero].powers[power] + ",";
-        }
-        myP.textContent = myString;
-        document.getElementById("div1").appendChild(myP)
-    }
-    document.getElementById("div1").appendChild(myH1);
-    document.getElementById("div1").appendChild(myH2);
-
-}
-
 let rulers = [];
 let requestURLSecond = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json";
 let requestSecond = new XMLHttpRequest();
