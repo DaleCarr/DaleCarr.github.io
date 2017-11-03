@@ -106,6 +106,7 @@ switch(firstString){
                 refNo: myStrings[2]
             }
             pretendGarage.push(refCar)
+            alert("Created car: " +refCar.refNo);
             break;
     case "CHECKIN": 
         let testString = myStrings[1];
